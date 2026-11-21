@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alerta-dengue-cali"
+version = "1.0.0"
+description = "Producto de datos para la alerta temprana de dengue en Santiago de Cali"
+authors = [
+  { name = "Samuel Acevedo Mambuscay" },
+  { name = "Luis Carlos Tez" },
+]
+requires-python = ">=3.11"
+dependencies = [
+  "pandas>=2.2",
+  "numpy>=1.26",
+  "matplotlib>=3.8",
+  "seaborn>=0.13",
+  "scipy>=1.12",
+  "scikit-learn>=1.4",
+  "pyarrow>=15",            # formato Parquet para Silver y Gold
+  "joblib>=1.3",            # guardar los modelos
+  "python-dotenv>=1.0",     # leer .env
+  "python-calamine>=0.2",   # lectura rápida de los Excel de microdatos del INS
+  "openpyxl>=3.1",          # lector alternativo de Excel (más lento)
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.4", "jupyterlab>=4", "nbstripout>=0.7"]
+app = ["flask>=3.0", "streamlit>=1.35"]   # API REST y aplicación web
+
+[tool.setuptools.packages.find]
+include = ["flows*", "app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B"]   # estilo, errores, imports ordenados y malas prácticas

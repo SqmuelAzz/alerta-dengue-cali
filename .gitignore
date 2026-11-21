@@ -1,0 +1,22 @@
+# Entorno y temporales de Python
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Configuración local (puede contener claves): nunca se sube
+.env
+
+# Datos de origen descargados de los portales (pesan más de 350 MB)
+Dataset_Dengue
+
+# Derivados: se regeneran con `make pipeline`
+data/
+models/
+*.log
+
+# Los informes escritos (reports/*.md) y sus figuras SÍ se versionan:
+# son parte de la entrega.
+.streamlit/secrets.toml
